@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+  <th:block th:include="fraqments/commons::head-content"></th:block>
+  <title>Error</title>
+  <link rel="stylesheet" href="/css/404-style.css" />
+  <link rel="stylesheet" href="/css/500-style.css" />
+
+  <style>
+
+  </style>
+</head>
+
+<body>
+<div class="container-fluid" style="background-color: #001b90">
+  <div class="banner-pink" style="background-color: #001b90"></div>
+</div>
+<div class="container-xl">
+  <div class="row container-content">
+    <div class="error-image">
+      <img src="/photos/wrong.png" alt="wrong-image" />
+    </div>
+
+    <div class="col content">
+      <h3>Something is going wrong</h3>
+      <h5>We have a meeting with the 5 kage. Please try again later</h5>
+      <form th:action="@{/}"
+            th:method="get">
+        <button
+                type="submit"
+                class="btn btn-pink"
+                style="background-color: #001b90"
+        >
+          Home
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
+<div class="container-fluid" style="background-color: #001b90">
+  <div
+          class="banner-pink second-banner"
+          style="background-color: #001b90"
+  ></div>
+</div>
+
+<th:block th:replace="fraqments/commons::footer-script"></th:block>>
+</body>
+</html>

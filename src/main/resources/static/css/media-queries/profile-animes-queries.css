@@ -1,0 +1,11 @@
+@media (max-width: 780px) {
+  .filter-box {
+    display: flex;
+    flex-direction: row;
+  }
+}
+@media (max-width: 590px) {
+  .anime-nav li a{
+    margin-top: 3rem;
+  }
+}

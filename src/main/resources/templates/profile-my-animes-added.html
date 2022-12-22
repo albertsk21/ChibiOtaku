@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <th:block th:include="fraqments/commons::head-content"></th:block>
+    <link rel="stylesheet" href="/css/profile-animes.css" />
+    <link
+      rel="stylesheet"
+      href="/css/media-queries/anime-details-queries.css"
+    />
+
+    <link
+      rel="stylesheet"
+      href="/css/media-queries/anime-reviews-queries.css"
+    />
+  </head>
+  <body>
+    <header th:replace="fraqments/commons::header-nav"></header>
+    <div class="container-xl main-container">
+      <div class="row details-box">
+        <div class="col first-col">
+          <div class="profile-box">
+            <div class="username-avatar"><h3 th:text="${#strings.substring(userVM.username,0,1)}">k</h3></div>
+            <div class="username-title"><h3 th:text="${userVM.username}">kakashi121</h3></div>
+          </div>
+        </div>
+        <div class="col-9 info-section">
+          <div th:replace="fraqments/user-nav::user-nav(${username}, 'anime-added-by-me',${authorization})" class="row"></div>
+
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <th scope="col" class="title-th col-9 th">Title</th>
+                <th scope="col" class="th">Type</th>
+                <th scope="col" class="th">Eps</th>
+                <th scope="col" class="th">Status</th>
+              </tr>
+            </thead>
+            <tbody>
+               <tr th:if = "${animes.size()} == 0">
+                <th class="item-not-found"> <h4>Table is empty:(</h4></th>
+              </tr>
+              <tr th:each="anime : ${animes}">
+                <th scope="col">
+                  <div class="first-col-item">
+                    <div class="image-result-item">
+                      <img th:src="${anime.imageUrl}" alt="" />
+                    </div>
+
+                    <div class="content-item">
+                      <div class="title-item">
+                      <h4 th:text="${anime.title}">Attack on Titan</h4>
+                      </div>
+                      <div class="summary-item">
+                        <p th:text="${#strings.substring(anime.content,0,100)} ">
+                          Lorem ipsum dolor sit amet consectetur adipisicing
+                          elit. Ipsa est ipsum quasi delectus aperiam,
+                          perferendis, corrupti dolor enim asperiores autem
+                          veniam ea cumque dolorem iure molestiae. Tempora ab
+                          exercitationem ducimus.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </th>
+                <th class="th-edit" ><h5 th:text="${ #strings.substring(anime.type,0,1) + #strings.toLowerCase(#strings.substring(anime.type,1)) }">TV</h5></th>
+                <th class="th-edit"><h5 th:text="${anime.episodes}">25</h5></th>
+                <th class="th-edit">
+                  <form action="">
+                    <button th:if = "${anime.statusObject.name()} == 'PENDING'" type="submit" class="btn-primary btn-status btn">
+                      Pending
+                    </button>
+                    <button th:if = "${anime.statusObject.name()} == 'ACCEPTED'" type="submit" class="btn-success btn-status btn">
+                      Accepted
+                    </button>
+                    <button th:if = "${anime.statusObject.name()}  == 'DECLINED'" type="submit" class="btn-danger btn-status btn">
+                      Denied
+                    </button>
+                  </form>
+                </th>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <th:block th:replace="fraqments/commons::footer"></th:block>
+    <th:block th:replace="fraqments/commons::footer-script"></th:block>
+  </body>
+</html>

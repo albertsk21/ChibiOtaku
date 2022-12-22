@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+  <head>
+
+    <th:block th:include="fraqments/commons::head-content"></th:block>
+    <link rel="stylesheet" href="/css/search-anime.css" />
+  </head>
+  <body>
+    <header th:include="fraqments/commons::header-nav">
+
+    </header>
+
+    <div class="container-fluid">
+      <div class="row container-search-box">
+        <div class="row search-image-box">
+          <img src="/photos/search-anime.png" alt="search-anime" />
+        </div>
+        <div class="row title-search-box"><h3>Search an anime</h3></div>
+      </div>
+    </div>
+
+    <div class="container-xl">
+
+        <form class=" row search-area" th:action="@{/animes/search}"
+              th:method="post"
+              th:object="${searchForm}"
+        >
+        <div class="input-group">
+
+
+            <input
+                    th:field="*{data}"
+                    type="search"
+                    class="form-control rounded search-bar"
+                    placeholder="Search"
+                    aria-label="Search"
+                    aria-describedby="search-addon"
+            />
+            <button type="submit" class="btn btn-purple search-btn">
+              <ion-icon name="search-outline"></ion-icon>
+            </button>
+
+        </div>
+        </form>
+
+
+      <div class="table-container">
+        <div class="search-title-box"><h4>Search Result</h4></div>
+
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th scope="col" class="title-th col-9 th">Title</th>
+              <th scope="col" class="th">Type</th>
+              <th scope="col" class="th">Eps</th>
+              <th scope="col" class="th">Popularity</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- <tr>
+              <th class="item-not-found">Anime not found :(</th>
+            </tr> -->
+            <tr th:each="anime : ${animes}">
+              <th scope="col">
+                <div class="first-col-item">
+                  <div class="image-result-item">
+                    <img th:src="${anime.imageUrl}" alt="" />
+                  </div>
+
+                  <div class="content-item">
+                    <div class="title-item">
+                      <a th:href="@{/animes/{id}(id = ${anime.id})}"><h4 th:text="${anime.title}">Attack on Titan</h4></a>
+                    </div>
+                    <div class="summary-item">
+                      <p th:text = "${#strings.substring(anime.content,0,100)} + '...'">
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </th>
+              <th class="th-edit" th:text="${anime.type.name()}"><h5>TV</h5></th>
+              <th class="th-edit" th:text="${anime.episodes}"><h5>25</h5></th>
+              <th class="th-edit" th:text="${anime.popularity}"><h5>8.53</h5></th>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+
+    <div th:replace="fraqments/commons::footer"></div>
+   <th:block th:include="fraqments/commons::footer-script"></th:block>
+  </body>
+</html>

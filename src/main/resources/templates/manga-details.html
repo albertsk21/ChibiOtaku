@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+  <head>
+    <th:block th:include="fraqments/commons::head-content"></th:block>
+    <link rel="stylesheet" href="/css/details.css" />
+    <link
+      rel="stylesheet"
+      href="/css/media-queries/anime-details-queries.css"
+    />
+  </head>
+  <body>
+    <header th:include="fraqments/commons::header-nav">
+    </header>
+
+    <div class="container-xl main-container"
+    >
+      <div class="row details-box">
+        <div class="col first-col">
+          <div class="image-box"  th:object="${manga}">
+            <img th:src="*{imageUrl}" alt="chainsaw-man" />
+          </div>
+        </div>
+        <div class="col-9 info-section"
+        th:object="${manga}">
+          <div class="row">
+
+            <th-block th:replace="fraqments/manga-nav::navbar('details')"></th-block>
+          </div>
+          <div class="row">
+            <div class="row users-details">
+              <div class="col-3 rank-area">
+                <div class="rank-section">
+                  <div class="star-icon-box">
+                    <img src="/photos/star-icon.png" alt="star-icon" />
+                  </div>
+                  <th:block th:if = "${score == 0}">
+                    <h4 th:text="${score}" >8.40</h4>
+                  </th:block>
+                  <th:block th:if ="${score != 0}">
+                    <h4 th:text="${#numbers.formatDecimal(score, 0, 'COMMA', 2, 'POINT')}"></h4>
+                  </th:block>
+                </div>
+                <div class="users-title"><h5>users: <span th:text="${counterUsers}"></span></h5></div>
+              </div>
+
+              <div class="col members-title">
+                <h4>Members: <span th:text="*{members}"></span></h4>
+              </div>
+            </div>
+          </div>
+
+          <th:block sec:authorize="isAuthenticated() ">
+
+            <div class="row my-details" th:object="${userMangaVM}" th:if = "${userMangaExist}">
+              <div class="row title-section"><h4>My details</h4></div>
+
+
+
+              <div class="col-2 buttons-details">
+                <button type="button" th:if = "*{watchStatus.name() == 'COMPLETE'}" class="btn btn-status btn-success">
+                  Complete
+                </button>
+                <button type="button" th:if = "*{watchStatus.name() == 'DROPPED'}" class="btn btn-status btn-danger">
+                  Dropped
+                </button>
+                <button type="button" th:if = "*{watchStatus.name() == 'NOT_FINISHED'}" class="btn btn-status btn-primary">
+                  Not finished
+                </button>
+                <button type="button" th:if = "*{watchStatus.name() == 'SET_ASIDE'}" class="btn btn-status btn-secondary">
+                  Set Aside
+                </button>
+                <button type="button" class="btn btn-status btn-warning">
+                  Your score: <span th:text="${#numbers.formatDecimal(score, 0, 'COMMA', 2, 'POINT')}"></span>
+                </button>
+              </div>
+            </div>
+          </th:block>
+          <div class="row synopsis-section">
+            <div class="row title-section">
+              <h4>Information</h4>
+            </div>
+
+            <div class="row">
+              <div class="col information-details">
+                <h5>Title: <span th:text="*{title}"> none</span></h5>
+<!--                <h5>Type: <span th:text="*{ #strings.substring(type,0,1) + #strings.toLowerCase(#strings.substring(type,1)) }">TV</span></h5>-->
+
+                <h5>Volumes: <span th:text="*{volumes}">Unknown</span></h5>
+                <h5>Published: 2022-10-01</h5>
+<!--                <h5>-->
+<!--                  Producers: <span th:text="*{producers}">TV Tokyo, Aniplex, Dentsu, Shueisha</span>-->
+<!--                </h5>-->
+                <h5>Authors: <span th:text="*{authors}">none</span></h5>
+<!--                <h5>Source: <span th:text="*{source}">none</span></h5>-->
+                <h5>Genres: <span th:text="*{genres}">none</span></h5>
+                <h5>Chapters: <span th:text="*{chapters}">none</span> min</h5>
+                <h5>Rating: <span th:text="*{rating}">none</span></h5>
+                <h5>Themes: <span th:text="*{themes}">none</span></h5>
+              </div>
+              <div class="col information-details">
+
+
+                <th:block th:if = "${score != 0 }">
+                  <h5>Score: <span th:text="${#numbers.formatDecimal(score, 0, 'COMMA', 2, 'POINT')}">8.40</span></h5>
+                </th:block>
+
+                <th:block th:if = "${score == 0 }">
+                  <h5>Score: <span th:text="${score}">8.40</span></h5>
+                </th:block>
+
+                <h5>Ranked: #<span th:text="*{ranked}">none</span></h5>
+                <h5>Popularity: #<span th:text="*{popularity}">none</span></h5>
+                <h5>Members: <span th:text="*{members}">none</span></h5>
+<!--                <h5>Favorites: <span>8,009</span></h5>-->
+              </div>
+            </div>
+          </div>
+
+          <div class="row summary">
+            <div class="row title-section">
+              <h4>Summary</h4>
+            </div>
+
+            <div class="row summary-content">
+              <div class="paragraphs">
+
+                <p th:text="*{content}"></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <th:block th:include="fraqments/commons::footer-script"></th:block>
+    <div th:replace="fraqments/commons::footer"></div>
+  </body>
+</html>

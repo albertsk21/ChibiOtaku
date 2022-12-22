@@ -1,0 +1,107 @@
+@import url("main.css");
+.search-image-box {
+  width: 20rem;
+  margin-top: 4rem;
+}
+.search-image-box img {
+  width: 20rem;
+}
+.title-search-box h3 {
+  font-size: 1.8rem;
+  text-transform: uppercase;
+}
+
+.container-search-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.title-search-box {
+  /* background-color: aqua; */
+
+  text-align: center;
+}
+
+.search-area {
+  margin-top: 5rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.input-group {
+  width: 50rem;
+}
+
+input[type="search"]::placeholder {
+  font-size: 1.4rem;
+}
+input[type="search"] {
+  padding: 1rem;
+  font-size: 1.4rem;
+}
+.search-btn {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+.search-btn {
+  font-size: 1.4rem;
+}
+
+.table-container {
+  color: #6c35c9;
+}
+.search-title-box {
+  color: #000;
+  border-bottom: #6c35c9 1px solid;
+  margin-top: 3rem;
+}
+.title-area {
+  width: 66%;
+}
+
+/* --------------------------------- */
+/* ---------------TABLE------------- */
+/* --------------------------------- */
+
+.table thead {
+  font-size: 1.4rem;
+  font-weight: 400;
+}
+
+thead {
+  background-color: #dfdee0;
+}
+tr th {
+  font-weight: 500;
+}
+.title-th {
+  text-align: center;
+}
+
+/* ---------ITEM--------- */
+.image-result-item {
+  width: 4rem;
+  min-width: 4rem;
+}
+.first-col-item {
+  display: flex;
+}
+.content-item {
+  margin-left: 1rem;
+}
+tbody th {
+  font-size: 1.2rem;
+}
+.th-edit h5 {
+  margin-top: 2rem;
+}
+
+.footer-search-page {
+  margin-top: 35rem;
+}
+.title-logo-footer {
+  border-bottom: #e99612 solid 2px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 1rem;
+}

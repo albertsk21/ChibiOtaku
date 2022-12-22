@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <th:block th:include="fraqments/commons::head-content"></th:block>
+
+    <title>Add manga</title>
+    <link rel="stylesheet" href="/css/add-anime-manga.css" />
+  </head>
+  <body>
+    <header th:include="fraqments/commons::header-nav"></header>
+    <div class="container-xl" style="height: 100rem">
+      <div class="row container-content">
+        <ul class="anime-nav">
+          <li><a class=" link-anime" th:href="@{/animes/add}">Anime</a></li>
+          <li><a class="link-anime active-link" href="#" th:href="@{/mangas/add}">Manga</a></li>
+        </ul>
+      </div>
+      <div class="row title-section" style="color: red">
+        <h5>
+          In this section you can add a manga but you will need to wait a while
+          until an administrator will going to  approve your manga
+        </h5>
+      </div>
+
+      <form
+        th:action="@{/manga/add}"
+        th:method="post"
+        th:object="${mangaBM}"
+      >
+        <div class="row">
+          <input
+                  th:field="*{title}"
+                  th:errorclass="border-danger"
+            type="text"
+            placeholder="Title"
+            class="col title-form"
+            required
+          />
+          <input
+                  th:field="*{volumes}"
+                  th:errorclass="border-danger"
+            type="text"
+            placeholder="Volumes"
+            class="col title-form"
+            required
+          />
+        </div>
+        <div class="row">
+          <input
+                  th:field="*{authors}"
+                  th:errorclass="border-danger"
+            type="text"
+            placeholder="Authors"
+            class="col title-form"
+            required
+          />
+          <input
+                  th:field="*{themes}"
+                  th:errorclass="border-danger"
+            type="text"
+            placeholder="Themes"
+            class="col title-form"
+            required
+          />
+        </div>
+        <div class="row">
+          <input
+                  th:field="*{genres}"
+                  th:errorclass="border-danger"
+            type="text"
+            placeholder="Genres"
+            class="col title-form"
+            required
+          />
+          <input
+                  th:field="*{rating}"
+                  th:errorclass="border-danger"
+            type="text"
+            placeholder="Rating"
+            class="col title-form"
+            required
+          />
+        </div>
+        <div class="row">
+          <input
+                  th:field="*{ranked}"
+                  th:errorclass="border-danger"
+            type="number"
+            placeholder="Ranked"
+            class="col title-form"
+            required
+          />
+          <input
+                  th:field="*{popularity}"
+                  th:errorclass="border-danger"
+            type="number"
+            placeholder="Popularity"
+            class="col title-form"
+            required
+          />
+        </div>
+
+        <div class="row">
+          <input
+                  th:field="*{chapters}"
+                  th:errorclass="border-danger"
+            type="number"
+            class="col title-form"
+
+            placeholder="Chapters"
+            required
+          />
+          <input
+
+
+                  th:field="*{members}"
+                  th:errorclass="border-danger"
+            type="number"
+            placeholder="Members"
+            class="col title-form"
+            required
+          />
+        </div>
+        <div class="row">
+          <input
+                  th:field="*{published}"
+                  th:errorclass="border-danger"
+            type="date"
+            class="col title-form"
+            value="published"
+            x
+            required
+          />
+          <input
+                  th:field="*{imageUrl}"
+                  th:errorclass="border-danger"
+            type="text"
+            placeholder="Image url"
+            class="col title-form"
+            required
+          />
+        </div>
+        <small th:errors="*{content}"></small>
+        <textarea  required class="col" placeholder="Write content....."  th:field="*{content}"  th:errorclass="border-danger"></textarea>
+
+        <input type="submit" class="btn btn-submit btn-warning" />
+      </form>
+    </div>
+
+
+  <th:block th:replace="fraqments/commons::footer"></th:block>
+  <th:block th:replace="fraqments/commons::footer-script"></th:block>
+  </body>
+</html>

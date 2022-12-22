@@ -1,0 +1,86 @@
+@import url("main.css");
+
+.title-top-anime {
+  margin-top: 5rem;
+}
+
+/* --------------------------------- */
+/* ---------------TABLE------------- */
+/* --------------------------------- */
+
+.table thead {
+  font-size: 1.4rem;
+  font-weight: 400;
+}
+
+thead {
+  background-color: #6c35c9;
+  color: #fff;
+}
+tr th {
+  font-weight: 500;
+}
+.title-th {
+  text-align: center;
+}
+.th {
+  border-left: #fff 1px solid;
+  text-align: center;
+}
+
+.rank-col h4 {
+  color: rgb(139, 139, 139);
+  font-size: 2.2rem;
+  font-weight: 500;
+}
+
+/* ---------ITEM--------- */
+.image-result-item {
+  width: 4rem;
+  min-width: 4rem;
+}
+.first-col-item {
+  display: flex;
+}
+.content-item {
+  margin-left: 1rem;
+}
+tbody th {
+  font-size: 1.2rem;
+}
+.th-edit h5 {
+  margin-top: 2rem;
+}
+
+.search-area {
+  width: 30rem;
+}
+.footer-search-page {
+  margin-top: 35rem;
+}
+.title-logo-footer {
+  border-bottom: #e99612 solid 2px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 1rem;
+}
+.tv-eps-col {
+  margin: 1rem 0rem;
+}
+.tv-eps-col,
+.release-date-col {
+  color: rgb(153, 153, 153);
+  font-weight: 600;
+}
+
+.btn-status {
+  margin-top: 1rem;
+  font-size: 1.2rem;
+}
+
+.th-edit {
+  text-align: center;
+}
+.th-edit h4 {
+  margin-top: 1rem;
+}

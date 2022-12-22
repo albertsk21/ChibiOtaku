@@ -1,0 +1,33 @@
+@media (max-width: 830px) {
+  .container-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .error-image {
+  }
+  .column-image {
+    justify-self: center;
+    align-self: center;
+  }
+  .content {
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+  }
+  .error-image {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+@media (max-width: 500px) {
+  .error-image {
+    width: 30rem !important;
+  }
+}
+@media (max-width: 330px) {
+  .error-image {
+    width: 30rem !important;
+  }
+}

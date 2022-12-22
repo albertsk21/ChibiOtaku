@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      xmlns:th="http://www.thymeleaf.org">
+  <head>
+
+
+    <th:block th:include="fraqments/commons::head-content"></th:block>
+    <link rel="stylesheet" href="/css/reviews.css" />
+    <link
+      rel="stylesheet"
+      href="/css/media-queries/anime-details-queries.css"
+    />
+
+    <link rel="stylesheet" href="/css/media-queries/anime-reviews-queries.css"/>
+
+  
+  </head>
+  <body>
+  <header th:include="fraqments/commons::header-nav">
+  </header>
+    <div class="container-xl main-container">
+      <div class="row details-box">
+        <div class="col first-col">
+          <div class="image-box">
+            <img th:src="${manga.imageUrl}" alt="chainsaw-man" />
+          </div>
+        </div>
+        <div class="col-9 info-section">
+          <div class="row">
+            <th-block th:replace="fraqments/manga-nav::navbar('reviews')"></th-block>
+            <div th:each="review : ${reviews}" class="reviews">
+              <div class="row review-item">
+                <div class="  user-details-area">
+                  <div class="username">
+                    <h5><a th:href="@{/users/{username} (username = *{review.getUsername()})}" th:text="*{review.getUsername()}">none</a></h5>
+                  </div>
+
+
+                  <div th:if="*{review.getStatusReview().name() == 'RECOMMENDED'}" class="  recommended">
+                    <div class="recommended-icon">
+                      <img src="/photos/icons/happy-icon.png" alt="happy-icon" />
+                    </div>
+                    <div class="recommended-text recommended-btn"><h5>Recommended</h5></div>
+                  </div>
+                   <div th:if="*{review.getStatusReview().name() == 'NOT_RECOMMENDED'}" class="  not-recommended">
+                    <div class="recommended-icon">
+                      <img src="/photos/icons/angry-icon.png" alt="angry-icon" />
+                    </div>
+                    <div class="not-recommended-text"><h5>Not Recommended</h5></div>
+                  </div>
+              </div>
+         
+              <div class = "">
+                <div class=" review-content">
+            <p th:text="*{review.content}">none</p>
+  
+            <h5>published: <span th:text="*{review.getCreated()}">none</span></h5>
+          </div>
+      </div>
+  
+           
+          </div>
+
+      
+            </div>
+
+
+
+            <div class=" row post-review" sec:authorize="isAuthenticated()">
+              <form  th:action="@{/manga/{id}/reviews(id = ${manga.id})}"
+                     th:method="post"
+                     th:object="${reviewBM}" class="row" >
+                <div>
+                  <div class="title-and-select row">
+
+                    <div class="col-2"><h4>leave a review</h4></div>
+                    <select th:field="*{statusReview}" class=" col form-select form-select-lg mb-3" aria-label=".form-select-sm example" required>
+
+                      <option th:each="status : ${T(com.example.chibiotaku.domain.enums.StatusReviewEnum).values()}"
+                              th:value="${status}"   th:text="${#strings.replace( #strings.substring(status,0,1) + #strings.toLowerCase(#strings.substring(status,1)) , '_',' ')}"></option>
+                    </select>
+                  </div>
+
+                  <div class="row form-area">
+
+
+                    <textarea th:field="*{content}" name="" id="" cols="80" rows="10" required></textarea>
+
+                    <button type="submit" class="  btn btn-outline-light btn-send">
+                      Send <ion-icon name="send-outline"></ion-icon>
+                    </button>
+
+
+                  </div>
+                </div>
+              </form>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <th:block th:include="fraqments/commons::footer-script"></th:block>
+    <div th:replace="fraqments/commons::footer"></div>
+  </body>
+</html>

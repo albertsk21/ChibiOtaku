@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <th:block th:include="fraqments/commons::head-content"></th:block>
+    <title>Add Anime</title>
+    <link rel="stylesheet" href="/css/add-anime-manga.css" />
+  </head>
+  <body>
+  <header th:include="fraqments/commons::header-nav"></header>
+    <div class="container-xl" style="height: 100rem">
+      <div class="row container-content">
+        <ul class="anime-nav">
+          <li><a class="active-link link-anime" th:href="@{/animes/add}">Anime</a></li>
+          <li><a class="link-anime"  th:href="@{/manga/add}">Manga</a></li>
+        </ul>
+      </div>
+      <div class="row title-section" style="color: red">
+        <h5>
+          In this section you can add an anime but you will need to wait a while
+          until an administrator will going to approve your anime
+        </h5>
+      </div>
+
+      <form
+        th:action="@{/animes/add}"
+        th:method="post"
+        th:object="${animeBM}"
+
+      >
+        <div class="row">
+
+
+
+
+            <input
+
+                    th:field="*{title}"
+                    th:errorclass="border-danger"
+                    type="text"
+                    placeholder="Title"
+                    class="col title-form"
+                    required
+            />
+
+          <input
+                  th:field="*{producers}"
+                  th:errorclass="border-danger"
+            type="text"
+            placeholder="Producers"
+            class="col title-form"
+            required
+          />
+        </div>
+        <div class="row">
+          <input
+
+
+                  th:field="*{studios}"
+                  th:errorclass="border-danger"
+            type="text"
+            placeholder="Studios"
+            class="col title-form"
+            required
+          />
+          <input
+
+
+                  th:field="*{source}"
+                  th:errorclass="border-danger"
+
+            type="text"
+            placeholder="Source"
+            class="col title-form"
+            required
+          />
+        </div>
+        <div class="row">
+          <input
+
+
+                  th:field="*{genres}"
+                  th:errorclass="border-danger"
+            type="text"
+            placeholder="Genres"
+            class="col title-form"
+            required
+          />
+          <input
+
+                  th:field="*{rating}"
+                  th:errorclass="border-danger"
+                  value=""
+            type="text"
+            placeholder="Rating"
+            class="col title-form"
+            required
+          />
+        </div>
+        <div class="row">
+          <input
+
+                  th:field="*{ranked}"
+                  th:errorclass="border-danger"
+
+            type="number"
+            placeholder="Ranked"
+            class="col title-form"
+            required
+          />
+          <input
+
+
+                  th:field="*{popularity}"
+                  th:errorclass="border-danger"
+            type="number"
+            placeholder="Popularity"
+            class="col title-form"
+            required
+          />
+        </div>
+
+        <div class="row">
+          <input
+
+                  th:field="*{duration}"
+                  th:errorclass="border-danger"
+            type="number"
+            placeholder="Duration"
+            class="col title-form duration"
+            required
+          />
+          <select th:field="*{type}" name="" id="" class="col">
+             <option th:each="type : ${T(com.example.chibiotaku.domain.enums.AnimeTypeEnum).values()}"
+              th:value="${type}" th:text="${ #strings.substring(type,0,1) + #strings.toLowerCase(#strings.substring(type,1)) }">Movie</option>
+          </select>
+        </div>
+        <div class="row">
+          <input
+
+                  th:field="*{members}"
+                  th:errorclass="border-danger"
+            type="number"
+            placeholder="Members"
+            class="col title-form duration"
+            required
+          />
+          <input
+                  th:field="*{episodes}"
+                  th:errorclass="border-danger"
+            type="number"
+            placeholder="Episodes"
+            class="col title-form"
+            required
+          />
+        </div>
+        <div class="row">
+          <input
+
+                  th:field="*{aired}"
+                  th:errorclass="border-danger"
+                  type="date" class="col title-form" required />
+          <input
+
+
+                  th:field="*{imageUrl}"
+                  th:errorclass="border-danger"
+            type="text"
+            placeholder="Image url"
+            class="col title-form"
+            required
+          />
+        </div>
+
+
+
+        <small th:errors="*{content}"></small>
+        <textarea required class="col" placeholder="Write content....."  th:field="*{content}"  th:errorclass="border-danger"></textarea>
+        <input type="submit" class="btn btn-submit btn-warning" />
+      </form>
+    </div>
+
+  <th:block th:replace="fraqments/commons::footer"></th:block>
+  <th:block th:replace="fraqments/commons::footer-script"></th:block>
+  </body>
+</html>

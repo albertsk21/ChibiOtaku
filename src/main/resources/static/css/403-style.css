@@ -1,0 +1,57 @@
+@import url("/css/main.css");
+@import url("/css/media-queries/main-queries.css");
+@import url("/css/media-queries/404-queries.css");
+body::-webkit-scrollbar-thumb {
+  background: #494661;
+
+}
+body {
+  min-height: 80vh;
+}
+.container-xl {
+  min-height: 75vh;
+}
+.container-fluid,
+.banner-pink {
+  background-color: #494661;
+  height: 4rem;
+}
+.container-xl {
+  justify-content: center;
+  align-items: center;
+}
+.error-image {
+  width: 40rem;
+  border-radius: 10px;
+}
+.error-image img {
+  border-radius: 10px;
+}
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.container-content {
+  margin-top: 10rem;
+}
+.btn-pink {
+  color: #fff;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  border: none;
+  background-color: #494661;
+  font-size: 1.4rem;
+}
+
+.btn-pink:hover {
+  color: #fff;
+}
+
+h3 {
+  font-size: 2.2rem;
+}

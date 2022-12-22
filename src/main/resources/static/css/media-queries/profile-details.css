@@ -1,0 +1,36 @@
+
+
+@media (max-width: 730px) {
+  .anime-nav {
+    display: grid !important;
+    grid-template-columns: 15rem 15rem 15rem;
+  }
+}
+
+@media (max-width: 700px) {
+  .anime-image {
+    width: 10rem;
+    min-width: 10rem;
+  }
+  .anime-template {
+    width: 25%;
+  }
+}
+@media (max-width: 530px) {
+  .anime-image {
+    width: 9rem;
+    min-width: 9rem;
+  }
+  .anime-nav {
+    grid-template-columns: 15rem 15rem;
+  }
+}
+
+@media (max-width: 460px) {
+  .anime-image {
+    width: 7rem;
+    min-width: 7rem;
+  }
+}
+@media (max-width: 460px) {
+}

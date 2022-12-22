@@ -1,0 +1,70 @@
+@media (max-width: 1250px) {
+  .container-image {
+    background-size: 150%;
+  }
+}
+
+@media (max-width: 815px) {
+  .container-image {
+    background-size: 180%;
+  }
+}
+
+@media (max-width: 680px) {
+  .container-image {
+    background-size: 240%;
+  }
+}
+
+@media (max-width: 500px) {
+  .container-image {
+    background-size: 280%;
+  }
+}
+
+@media (max-width: 432px) {
+  .container-image {
+    background-size: 400%;
+  }
+}
+
+@media (max-width: 417px) {
+  .blur {
+    display: none;
+  }
+  .center-form {
+    width: 100%;
+    height: 100%;
+    border-radius: 0px;
+  }
+  .position-items-center {
+    display: block;
+    justify-content: center;
+    align-items: center;
+  }
+  .container-image {
+    background-image: none;
+    padding: 0rem;
+  }
+  .form {
+    margin-top: 0rem;
+    padding-top: 10rem;
+    width: auto;
+  }
+}
+
+@media (max-width: 390px) {
+  .input-name {
+    margin-left: 1rem;
+    margin-right: 1rem;
+  }
+  .register-password {
+    margin-left: 1rem;
+    margin-right: 1rem;
+  }
+}
+@media (max-width: 330px) {
+  html {
+    font-size: 52.5%;
+  }
+}

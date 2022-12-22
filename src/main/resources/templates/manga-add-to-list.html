@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <th:block th:include="fraqments/commons::head-content"></th:block>
+    <link rel="stylesheet" href="/css/anime-add-to-list.css" />
+    <link
+      rel="stylesheet"
+      href="/css/media-queries/anime-details-queries.css"
+    />
+  </head>
+  <body>
+    <header th:include="fraqments/commons::header-nav">
+    </header>
+
+    <div class="container-xl main-container">
+      <div class="row details-box">
+        <div class="col first-col">
+          <div class="image-box">
+            <img th:src="${manga.imageUrl}" alt="chainsaw-man" />
+          </div>
+        </div>
+        <div class="col-9 info-section">
+          <div class="row">
+            <ul th:replace="fraqments/manga-nav::navbar('add')"></ul>
+
+            <div class="row add-to-list-section">
+              <div class="row title-list">
+                <h4>Add this <span>anime</span> in to your list</h4>
+              </div>
+              <div class="row form-details">
+                <div class="score-title"><h4>Your score</h4></div>
+
+
+
+                  <form th:if = "${!existManga}" th:action="@{/manga/{id}/add/(id = ${manga.id})}"
+                        th:method="post"
+                  th:object="${animeForm}">
+                    <select th:field="*{score}"
+                            class="col form-select form-select-lg mb-3"
+                            aria-label=".form-select-sm example"
+                            required
+                    >
+                      <option selected value="" >Your score</option>
+                      <option value="10">10</option>
+                      <option value="9">9</option>
+                      <option value="8">8</option>
+                      <option value="7">7</option>
+                      <option value="6">6</option>
+                      <option value="5">5</option>
+                      <option value="4">4</option>
+                      <option value="3">3</option>
+                      <option value="2">2</option>
+                      <option value="1">1</option>
+                    </select>
+                    <select
+                            class="col form-select form-select-lg mb-3"
+                            aria-label=".form-select-sm example"
+                            required
+                            th:field="*{watchStatus}"
+                    >
+                      <option selected  value="" >Your status</option>
+                      <option th:each="type : ${T(com.example.chibiotaku.domain.enums.WatchStatusEnum).values()}"
+                              th:value="${type}" th:text="${ #strings.substring(#strings.replace(type,'_',' '),0,1) + #strings.toLowerCase(#strings.substring(#strings.replace(type,'_',' '),1)) }">Movie</option>
+
+                    </select>
+
+                    <button type="submit" class="btn btn-light">
+                      Add
+                    </button>
+                  </form>
+                  <form th:if = "${existManga}" th:action="@{/manga/{id}/edit(id = ${manga.id})}"
+                        th:method="put"
+                        th:object="${animeForm}">
+                    <select
+                            class="col form-select form-select-lg mb-3"
+                            aria-label=".form-select-sm example"
+                            th:field="*{score}"
+                            required
+                    >
+                      <option value="10">10</option>
+                      <option value="9">9</option>
+                      <option value="8">8</option>
+                      <option value="7">7</option>
+                      <option value="6">6</option>
+                      <option value="5">5</option>
+                      <option value="4">4</option>
+                      <option value="3">3</option>
+                      <option value="2">2</option>
+                      <option value="1">1</option>
+                    </select>
+                    <select
+                            class="col form-select form-select-lg mb-3"
+                            aria-label=".form-select-sm example"
+                            th:field="*{watchStatus}"
+                            required
+                    >
+                      <option th:each="type : ${T(com.example.chibiotaku.domain.enums.WatchStatusEnum).values()}"
+                              th:value="${type}" th:text="${ #strings.substring(#strings.replace(type,'_',' '),0,1) + #strings.toLowerCase(#strings.substring(#strings.replace(type,'_',' '),1)) }">Movie</option>
+
+
+                    </select>
+
+                    <button type="submit" class="btn btn-light">
+                      Update
+                    </button>
+                  </form>
+
+
+
+                <th:block th:if = "${existManga}">
+                  <form th:action="@{/manga/{id}/my-list/delete/(id = ${manga.id})}"
+                        th:method="delete">
+                    <button type="submit" class="btn btn-danger">
+                      Delete from your list
+                    </button>
+                  </form>
+                </th:block>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  <div th:replace = "fraqments/commons::footer"></div>
+  <th:block th:include="fraqments/commons::footer-script"></th:block>
+  </body>
+</html>

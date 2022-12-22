@@ -1,0 +1,169 @@
+* {
+  padding: 0px;
+  margin: 0px;
+  box-sizing: border-box;
+}
+
+/* 
+//-------------COLOR------------//
+  main --> #6c35c9
+  secondary  --> #fcc100;
+  little dark --> #412079
+  font little little visible -->   rgb(102, 102, 102)
+//------------------------------//
+*/
+html {
+  font-size: 62.5%;
+  font-family: "Montserrat", sans-serif;
+  display: flex;
+  flex-direction: column;
+}
+
+body {
+  line-height: 1;
+  font-weight: 400;
+  min-height: 100vh;
+}
+
+
+img {
+  width: 100%;
+}
+.bg-purple {
+  background-color: #6c35c9;
+}
+
+.bg-transparent {
+  background-color: #0000007a;
+}
+
+.navbar{
+  position: sticky;
+  top: 0px;
+}
+/*--------SCROLL-BAR---------------*/
+
+body::-webkit-scrollbar {
+  width: 15px;
+}
+
+body::-webkit-scrollbar-thumb {
+  background: #6432b9;
+  margin-left: 1px;
+  border-radius: 10px;
+  transition: all 0.5s;
+}
+/* ---------------------------------- */
+/* ----------NAVIGATION-BAR---------- */
+/* ---------------------------------- */
+
+
+.list-nav li {
+  margin-bottom: 1rem;
+}
+.list-nav li {
+  list-style: none;
+}
+
+.list-nav li a {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.btn-nav:hover {
+  color: #fcc100;
+}
+.btn-nav {
+  text-decoration: none;
+  color: #fff;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  border: none;
+  transition: all 1s;
+}
+.btn-nav:focus {
+  color: #fcc100;
+}
+.nav-icon {
+  margin-left: 1rem;
+  font-size: 2.2rem;
+}
+
+.btn-purple {
+  color: #fff;
+  background-color: #6c35c9;
+  border-color: #6c35c9;
+}
+.btn-purple:hover {
+  color: #fff;
+  background-color: #412079;
+  border-color: #412079;
+}
+.btn-small {
+  width: 6rem;
+  height: 3rem;
+  font-size: 1.2rem;
+}
+.btn-nav {
+  /* background-color: #fcc100; */
+  height: 2rem;
+}
+.icon-image {
+  width: 2.2rem;
+}
+.icon-image img {
+  width: 100%;
+}
+
+.dropdown-menu {
+  background-color: #fcc100;
+  font-size: 1.4rem;
+  text-transform: uppercase;
+  padding: 1rem;
+}
+.align-center {
+  text-align: center;
+}
+.btn-logout {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+small {
+  font-size: 1.4rem;
+  color: red;
+}
+/* ---------------------------- */
+/* -----------FOOTER----------- */
+/* ---------------------------- */
+
+footer {
+  background-color: #6c35c9;
+  height: 15rem;
+  color: #fff;
+  margin-top: auto;
+}
+
+footer .row h3 {
+  text-align: center;
+  text-transform: uppercase;
+  color: #e99612;
+  padding-bottom: 1rem;
+}
+
+footer .row {
+  margin-top: 2rem;
+}
+.title-logo-footer {
+  border-bottom: #e99612 solid 2px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 2rem;
+  height: 5rem;
+  width: 40rem;
+}
+
+.cols-footer {
+  justify-content: center;
+  align-items: center;
+}

@@ -1,0 +1,285 @@
+@import url("main.css");
+
+.w-100 {
+  width: 100% !important;
+}
+
+.carousel {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.active {
+  background-color: #6c35c9;
+  color: #6c35c9;
+}
+
+/* -------------------------------------------------- */
+/* -------------------SLIDE-SHOW--------------------- */
+/* -------------------------------------------------- */
+
+.w-fill {
+  width: 100%;
+}
+
+.slide-show-section {
+  overflow: hidden;
+  height: 84vh;
+}
+.slide-show-container {
+  position: relative;
+  /* max-width: 131rem; */
+  width: 100%;
+  max-height: 57.6rem;
+  margin: auto;
+  overflow: hidden;
+}
+.carousel-item {
+  display: none;
+}
+.active-carousel-item {
+  display: block;
+}
+.slide-show-container img {
+  width: 100%;
+}
+
+.btn-arrow {
+  border: none;
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  margin-top: -2.2rem;
+  padding: 16px;
+  color: white;
+  font-weight: bold;
+  font-size: 3.2rem;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+  background-color: rgba(108, 53, 201, 0.4);
+}
+
+.btn-arrow:hover {
+  color: #fff;
+  background-color: rgba(108, 53, 201, 0.7);
+}
+.btn-forward {
+  right: 2%;
+}
+
+.btn-back {
+  left: 2%;
+}
+.slide-image {
+  background-color: #999;
+  background-position: center top;
+  background-repeat: no-repeat;
+  background-size: 100%;
+
+  height: 80rem;
+}
+
+.btn-book {
+  position: absolute;
+  bottom: 5rem;
+  right: 12rem;
+}
+.carousel-indicators {
+  position: absolute;
+  display: flex;
+  gap: 1rem;
+  bottom: 5rem;
+
+  left: 34%;
+  transform: translateX(-50%);
+}
+.carousel-inidicator {
+  color: #999;
+  border: none;
+  padding: 0.4rem 2rem;
+  transition: all 0.3s;
+}
+
+.h4-carousel {
+  position: absolute;
+  top: 2rem;
+  left: 4rem;
+  color: aliceblue;
+  text-transform: uppercase;
+}
+
+.h4-carousel h4 {
+  font-size: 2.2rem;
+}
+.hide {
+  display: none;
+}
+.active-item {
+  display: block;
+}
+
+.up-text {
+  left: 6rem;
+  top: 2rem;
+}
+
+.active-dot {
+  background-color: #e99612;
+}
+
+.carousel-inidicator:hover {
+  background-color: #e99612;
+}
+
+/* Fading animation */
+.fade {
+  -webkit-animation-name: fade;
+  -webkit-animation-duration: 1.5s;
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@-webkit-keyframes fade {
+  from {
+    opacity: 0.3;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fade {
+  from {
+    opacity: 0.3;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.fade:not(.show) {
+  opacity: 1;
+}
+
+/* ---------------------------- */
+/* ----TOP--ANIME-SECTION------ */
+/* ---------------------------- */
+.container-anime {
+  background-color: #e9e9e9;
+  margin-left: 0.01rem;
+  padding-bottom: 1rem;
+}
+.top-anime-img {
+  margin-top: 1rem;
+}
+
+.popular-anime-dashboard {
+  background-color: #6c35c9;
+  color: #fff;
+  border-left: #6c35c9 2px solid;
+}
+.popular-anime-dashboard {
+  margin-top: 3rem;
+}
+.popular-anime-dashboard h3 {
+  text-align: center;
+}
+.popular-anime-dashboard h3 a {
+  color: #fff;
+  margin-left: 15rem;
+  text-transform: lowercase;
+}
+.top-anime-img {
+  width: 10rem;
+}
+
+/* ------------------------------------- */
+/* ---------WEOLCOME-SECTION------------ */
+/* ------------------------------------- */
+
+.welcome-image {
+  margin-top: 5rem;
+}
+
+.welcome-image img {
+  width: 30rem;
+  border-radius: 10%;
+}
+.content-area {
+  /* background-color: #999; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-right: 4rem;
+}
+
+.content-area h2 {
+  background-color: #e99612;
+  padding: 1rem;
+  border-radius: 1rem;
+  color: #fff;
+  margin-bottom: 3rem;
+  text-transform: uppercase;
+}
+.content-area p {
+  font-size: 1.8rem;
+  text-align: center;
+  font-weight: 700;
+}
+
+/* ------------------------------------ */
+/* --------FEEDBACK-SECTION------------ */
+/* ------------------------------------ */
+.se .reviews {
+  margin-top: 1rem;
+}
+.revew-anime-img img {
+  width: 10rem;
+}
+
+.revew-title {
+  margin-top: 4rem;
+  background-color: #6c35c9;
+  color: #fff;
+}
+
+/* .revew-section {
+  width: 10rem;
+  height: 50rem;
+}
+
+.container-revew {
+  width: 50rem;
+} */
+.review-section{
+  margin-bottom: 10rem ;
+}
+.title-review {
+  border-bottom: #6c35c9 2px solid;
+  margin-bottom: 1rem;
+}
+.image-review {
+  width: 7em;
+  min-width: 7rem;
+}
+
+.review-template {
+  display: flex;
+  gap: 2rem;
+  align-items: flex-start;
+  justify-content: start;
+  padding-bottom: 1rem;
+  border-bottom: #999 1px solid;
+  margin-bottom: 1rem;
+}
+
+.content-review h5 {
+  font-size: 1.6rem;
+  margin-bottom: 1rem;
+}
+.content-review p {
+  font-size: 1.2rem;
+}

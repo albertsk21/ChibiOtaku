@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+  <head>
+
+
+    <th:block th:include="/fraqments/commons::head-content"></th:block>
+
+    <link rel="stylesheet" href="/css/form.css" />
+    <link rel="stylesheet" href="/css/media-queries/form-queries.css" />
+    <title>Register</title>
+  </head>
+  <body>
+    <div
+      class="position-items-center main-form-container container-fluid container-image"
+    >
+      <div class="blur"></div>
+      <div class="center-form">
+        <form class="form"
+              th:action="@{/users/register}"
+              th:method="post"
+              th:object="${userRegisterBM}"
+        >
+          <div>
+            <h1 class="login-title">Register</h1>
+            <br />
+          </div>
+          <h2>Sign up</h2>
+
+          <div class="container-errors" >
+            <th:block th:if="${#fields.hasAnyErrors()}">
+              <small th:each="err : ${#fields.allErrors()}" th:text="${err}" id="usernameUniqueError" >Username is already occupied</small>
+            </th:block>
+            <small  th:if="${validatePassword == true}" id="usernameUniqueError" >Password must be the same</small>
+
+
+          </div>
+
+          <div class="container">
+            <div class="row">
+              <input
+                      th:field="*{firstName}"
+                type="text"
+                class="border col input-name"
+                      th:errorclass="border-danger"
+
+                placeholder="First Name"
+              />
+              <input
+                      th:field="*{lastName}"
+                type="text"
+                      th:errorclass="border-danger"
+
+                class="border col input-name"
+                placeholder="Last Name"
+              />
+            </div>
+
+            <div class="row">
+              <input
+
+                      th:field="*{username}"
+                      th:errorclass="border-danger"
+
+                type="text"
+                placeholder="Username"
+                class="border col input-name"
+              />
+              <input
+                      th:field="*{email}"
+                      th:errorclass="border-danger"
+
+                type="email"
+                placeholder="Email"
+                class="border col input-name"
+              />
+            </div>
+
+            <div class="row">
+              <input
+                      th:field="*{password}"
+                      th:errorclass="border-danger"
+
+                type="password"
+                placeholder="Password"
+                class="border col register-password"
+              />
+            </div>
+
+            <div class="row">
+              <input
+                      th:field="*{confirmPassword}"
+                      th:errorclass="border-danger"
+                type="password"
+                placeholder="Confirm Password"
+                class="border col register-password"
+              />
+            </div>
+          </div>
+
+          <div class="row">
+            <input class="btn login-btn" type="submit" value="Submit" />
+          </div>
+        </form>
+
+        <p class="paragraph-form">
+          Do you have an account? <a th:href="@{/users/login}">Sign in here</a>
+        </p>
+
+        <a class="btn btn-purple btn-small btn-back-link" th:href="@{/}">Home</a>
+      </div>
+    </div>
+  </body>
+</html>

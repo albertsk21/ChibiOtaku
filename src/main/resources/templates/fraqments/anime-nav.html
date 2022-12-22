@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>Anime Nav</title>
+</head>
+<body>
+  <th:block th:fragment="navbar(activeLinkName)">
+    <ul class="anime-nav">
+      <li><a th:classappend="${activeLinkName} == 'details' ? 'active-link' : '' " class=" link-anime" th:href="@{/animes/{id}(id = ${animeDetailsVM.id})}">Details</a></li>
+      <li><a th:classappend="${activeLinkName} == 'reviews' ? 'active-link' : '' " class="link-anime" th:href="@{/animes/{id}/reviews(id = ${animeDetailsVM.id})}">Reviews</a></li>
+
+      <th:block sec:authorize = "isAuthenticated()">
+        <li><a th:classappend="${activeLinkName} == 'add' ? 'active-link' : '' " class="link-anime" th:href="@{/animes/{id}/add(id = ${animeDetailsVM.id})}">Add to my list</a></li>
+      </th:block>
+    </ul>
+  </th:block>
+</body>
+</html>

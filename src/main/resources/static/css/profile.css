@@ -1,0 +1,74 @@
+@import url("details.css");
+
+.first-col {
+  margin-top: 0rem;
+}
+.profile-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.container-details {
+  background-color: rgb(228, 228, 228);
+  border-radius: 10px;
+}
+
+.username-avatar {
+  margin-top: 8rem;
+  background-color: #6c35c9;
+  width: 10rem;
+  height: 10rem;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  color: #fff;
+  border-radius: 70%;
+}
+.joined-title {
+  margin-top: 1rem;
+  margin-left: 1rem;
+}
+.username-avatar h3 {
+  font-size: 4.2rem;
+  text-transform: uppercase;
+}
+
+.username-title {
+  margin-top: 1rem;
+  text-align: center;
+}
+
+.btn {
+  margin-right: 1rem;
+}
+.btn-status{
+  margin-top: 1rem;
+}
+.btn-success,
+.btn-primary,
+.btn-danger,
+.btn-secondary{
+  font-size: 1.2rem;
+}
+
+.button-details-box {
+  display: flex;
+
+  align-items: center;
+  margin-top: 1rem;
+}
+.buttons-box {
+  margin-bottom: 1rem;
+}
+.action-title {
+  margin-top: 2rem;
+  border-bottom: #6c35c9 1px solid;
+}
+.anime-image {
+  margin-top: 1rem;
+
+  max-width: 10rem;
+}

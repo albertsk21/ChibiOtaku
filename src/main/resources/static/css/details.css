@@ -1,0 +1,132 @@
+@import url("main.css");
+@import url("media-queries/profile-details.css");
+
+.main-container {
+  margin-top: 5rem;
+  margin-bottom: 40rem;
+}
+
+.image-box {
+  width: 25rem;
+  min-width: 25rem;
+}
+.image-box img {
+  border-radius: 10px;
+  width: 25rem;
+}
+
+.first-col {
+  margin-top: 5.4rem;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.anime-nav {
+  display: flex;
+  gap: 1rem;
+  border-bottom: 2px solid #6c35c9;
+  margin-top: 3rem;
+}
+.anime-nav li {
+  list-style: none;
+  margin-bottom: 1rem;
+}
+.anime-nav li a {
+  text-decoration: none;
+  font-size: 1.4rem;
+  padding: 0.5rem 1rem 0.5rem 1rem;
+  transition: all 0.5s;
+  color: #000;
+}
+
+.anime-nav li .active-link {
+  background-color: #6c35c9;
+  border-radius: 5px;
+  color: #fff;
+}
+.anime-nav li a:hover {
+  background-color: #6c35c9;
+  border-radius: 5px;
+  color: #fff;
+}
+
+.star-icon-box {
+  width: 5rem;
+}
+.users-details {
+  background-color: rgb(228, 228, 228);
+  border-radius: 10px;
+}
+.rank-section {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.rank-area {
+  border-right: 2px rgb(196, 196, 196) solid;
+}
+.members-title,
+.users-title {
+  margin-top: 1rem;
+}
+.members-title h5 {
+  font-size: 1.4rem;
+  color: rgb(102, 102, 102);
+}
+.rank-section {
+  margin-top: 1rem;
+}
+.rank-section h4 {
+  margin-top: 1rem;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: rgb(102, 102, 102);
+}
+.animes {
+  /*background-color: aqua;*/
+  height: 20rem;
+}
+/* ----BTN---- */
+
+.btn-status {
+  font-size: 1.2rem;
+}
+.title-section {
+  margin-top: 2rem;
+}
+.title-section {
+  font-size: 1.6rem;
+
+  padding-bottom: 0.4rem;
+  border-bottom: 1px rgb(102, 102, 102) solid;
+  margin-bottom: 1rem;
+}
+.buttons-details {
+  display: flex;
+  /* background-color: aqua; */
+
+  gap: 3rem;
+  width: 25rem;
+}
+
+/* ----------------------------------------------- */
+/* ------------INFORMATION-SECTION---------------- */
+/* ----------------------------------------------- */
+.paragraphs {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+.information-details h5 {
+  margin-top: 1rem;
+}
+
+.summary-title {
+  margin-top: 2rem;
+}
+
+.summary-content {
+  font-size: 1.4rem;
+  border-bottom: 1px rgb(102, 102, 102) solid;
+}

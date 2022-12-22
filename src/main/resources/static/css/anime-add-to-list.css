@@ -1,0 +1,46 @@
+@import url("details.css");
+
+.add-to-list-section {
+  background-color: #6c35c9;
+  height: 34.2rem;
+  border-radius: 10px;
+}
+
+.title-list {
+  margin-top: 1rem;
+  color: #fff;
+  text-transform: uppercase;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #fff;
+  height: 2.5rem;
+  width: 40rem;
+}
+
+.form-select {
+  width: 50%;
+  background-color: #fcc100;
+  margin-bottom: 10rem;
+}
+
+.checkbox-area {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+.btn-light {
+  padding-left: 2rem;
+  padding-right: 2rem;
+  font-size: 1.2rem;
+}
+.score-title h4 {
+  color: #fff;
+}
+
+.score-title {
+  border-bottom: #fff solid 1px;
+  height: 3rem;
+  width: 40%;
+}
+.title-section {
+  color: #000;
+}

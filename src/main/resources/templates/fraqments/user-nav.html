@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div th:fragment = "user-nav(username, activeLinkName, authorization)" class="row">
+    <ul class="anime-nav">
+        <li><a th:classappend="${activeLinkName} == 'details' ? 'active-link' : '' " class=" link-anime" th:href="@{/users/{username}(username = ${username})}">Details</a></li>
+        <li><a  th:classappend="${activeLinkName} == 'anime-list' ? 'active-link' : '' " class="link-anime" th:href="@{/users/{username}/list(username = ${username})}">Anime/Manga</a></li>
+
+        <th:block th:if = "${authorization}">
+            <li><a th:classappend="${activeLinkName} == 'anime-added-by-me' ? 'active-link' : '' " class="link-anime" th:href="@{/users/{username}/animes-added/(username = ${username})}">Anime series added</a>
+            </li>
+            <li >
+                <a th:classappend="${activeLinkName} == 'manga-added-by-me' ? 'active-link' : '' " class="link-anime" th:href="@{/users/{username}/mangas-added/(username = ${username})}">Manga series added</a>
+            </li>
+        </th:block>
+
+
+        <th:block th:if = "${authorization}">
+            <li sec:authorize="hasRole('ADMIN')">
+                <a class="link-anime" th:classappend="${activeLinkName} == 'admin' ? 'active-link' : '' "  th:href="@{/users/{username}/admin-mode/(username = ${username})}">Admin mode</a>
+            </li>
+        </th:block>
+
+    </ul>
+</div>
+</body>
+</html>

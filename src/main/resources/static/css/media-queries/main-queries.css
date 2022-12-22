@@ -1,0 +1,25 @@
+@media (max-width: 720px) {
+  /* .list-nav {
+    --bs-gutter-x: 7.5rem;
+  }
+  .list-nav ul {
+    padding-left: 2rem;
+  } */
+}
+
+@media (max-width: 665px) {
+  .list-nav {
+    --bs-gutter-x: 5rem;
+  }
+}
+
+@media (max-width: 593px) {
+  .list-nav {
+    --bs-gutter-x: 3rem;
+  }
+}
+@media (max-width: 516px) {
+  .dropdown-menu ul li a {
+    font-size: 1.2rem;
+  }
+}

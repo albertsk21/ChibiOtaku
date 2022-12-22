@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <th:block th:include="fraqments/commons::head-content">
+
+    </th:block>
+    <link rel="stylesheet" href="/css/profile.css" />
+    <link
+      rel="stylesheet"
+      href="/css/media-queries/anime-details-queries.css"
+    />
+
+    <link
+      rel="stylesheet"
+      href="/css/media-queries/anime-reviews-queries.css"
+    />
+  </head>
+  <body>
+  <header th:include="fraqments/commons::header-nav">
+
+  </header>
+    <div class="container-xl main-container">
+      <div class="row details-box">
+        <div class="col first-col">
+          <div class="profile-box">
+            <div class="username-avatar"><h3 th:text="${#strings.substring(userVM.username,0,1)}">k</h3></div>
+            <div class="username-title"><h3 th:text="${userVM.username}">kakashi121</h3></div>
+          </div>
+        </div>
+        <div class="col-9 info-section">
+          <div th:replace="fraqments/user-nav::user-nav( ${userVM.username} ,'details', ${authorization})" class="row"></div>
+          <div class="row container-details">
+            <div class="row">
+              <div class="col">
+                <h5 class="joined-title">joined: <span th:text="${userVM.created}">2018-07-12</span></h5>
+              </div>
+              <div class="col buttons-box">
+                <div class="button-details-box">
+                  <button class="btn btn-success">Complete</button>
+                  <div class=""><h4 th:text="${userVM.complete}">12</h4></div>
+                </div>
+                <div class="button-details-box">
+                  <button class="btn btn-primary">Watching</button>
+                  <div class=""><h4 th:text="${userVM.notFinished}">2</h4></div>
+                </div>
+                <div class="button-details-box">
+                  <button class="btn btn-danger" >Dropped</button>
+                  <div class=""><h4 th:text="${userVM.dropped}">7</h4></div>
+                </div>
+                <div class="button-details-box">
+                  <button class="btn btn-secondary" >Set Aside</button>
+                  <div class=""><h4 th:text="${userVM.setAside}">7</h4></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="action-animes">
+            <div class="row action-title">
+              <h4>Latest anime updates</h4>
+            </div>
+
+            <div class="row animes">
+              <div th:each="anime : ${animes}" class="col-2 anime-template">
+                <div class="anime-image">
+                  <a th:href="@{/animes/{id}(id = ${anime.id})}"
+                    ><img
+                      th:src="${anime.imageUrl}"
+                      alt="attack-on-titan"
+                  /></a>
+                </div>
+              </div>
+
+
+
+            </div>
+          </div>
+          <div class="action-animes">
+            <div class="row action-title">
+              <h4>Latest manga updates</h4>
+            </div>
+
+            <div class="row animes">
+              <div  th:each="manga : ${mangas}" class="col-2 anime-template">
+                <div class="anime-image">
+                  <a th:href="@{/manga/{id}(id = ${manga.id})}"
+                    ><img th:src="*{manga.imageUrl}" alt="berserk"
+                  /></a>
+                </div>
+              </div>
+
+
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  <th:block th:replace="fraqments/commons::footer"></th:block>
+  <th:block th:replace="fraqments/commons::footer-script"></th:block>
+    </div>
+  </body>
+</html>

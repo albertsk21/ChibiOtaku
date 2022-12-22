@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head>
+
+  <title>Dashboard</title>
+  <th:block th:include="fraqments/commons::head-content"></th:block>
+  <link rel="stylesheet" href="/css/dashboard.css" />
+  <link rel="stylesheet" href="/css/media-queries/dashboard-queries.css" />
+
+</head>
+  <body>
+  <header th:include="fraqments/commons::header-nav">
+  </header>
+    <div class="">
+      <div class="slide-show-container">
+        <div class="carousel-item fade active-carousel-item">
+          <img src="/photos/carousel/demon-slayer.webp" alt="" />
+          <div class="h4-carousel">
+            <h4>Demon slayer</h4>
+          </div>
+        </div>
+        <div class="carousel-item fade">
+          <img src="/photos/carousel/attack-on-titan.jpg" alt="" />
+          <div class="h4-carousel">
+            <h4>Attack on titan</h4>
+          </div>
+        </div>
+        <div class="carousel-item fade">
+          <img src="/photos/carousel/fairy-tail.jpg " alt="" />
+          <div class="h4-carousel">
+            <h4>Fairy Tail</h4>
+          </div>
+        </div>
+        <div class="carousel-item fade">
+          <img src="/photos/carousel/boruto.png " alt="Boruto" />
+          <div class="h4-carousel">
+            <h4>Boruto: Naruto next generations</h4>
+          </div>
+        </div>
+
+        <button id="btn-forward" class="btn btn-arrow btn-forward">
+          <ion-icon name="chevron-forward-outline"></ion-icon>
+        </button>
+        <button id="btn-back" class="btn btn-arrow btn-back">
+          <ion-icon name="chevron-back-outline"></ion-icon>
+        </button>
+
+        <div class="carousel-indicators">
+          <button type="button" class="carousel-inidicator active-dot"></button>
+          <button type="button" class="carousel-inidicator"></button>
+          <button type="button" class="carousel-inidicator"></button>
+          <button type="button" class="carousel-inidicator"></button>
+        </div>
+      </div>
+    </div>
+
+    <div class="container-xl">
+      <div class="row top-anime-section">
+        <div class="col-8 welcome-area">
+          <div class="row">
+            <div class="col welcome-image">
+              <img src="/photos/dashboard/welcome-anime.jpg" alt="" />
+            </div>
+            <div class="col content-area">
+              <h2>Welcome to our platform!</h2>
+              <p>
+                ChibiOtaku offers you the best feedback for anime and manga
+                series!
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="row">
+            <div class="col popular-anime-dashboard">
+              <h3>Most Popular Anime </h3>
+            </div>
+
+            <div class="row container-anime">
+              <div class="top-anime-img col" th:each="anime : ${animes}">
+                <a th:href="@{/animes/{id}(id = ${anime.id})}">
+                  <img th:src="${anime.imageUrl}" alt=""
+                /></a>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col popular-anime-dashboard">
+              <h3>Most Popular Manga</h3>
+            </div>
+
+            <div class="row container-anime">
+              <div class="top-anime-img col" th:each="manga : ${mangas}">
+                <a th:href="@{/manga/{id}(id = ${manga.id})}">
+                  <img
+                    th:src="${manga.imageUrl}"
+                    alt=""
+                /></a>
+              </div>
+
+            </div>
+          </div>
+        </div>
+        <div class="">
+          <div class="col-8 review-section">
+            <div class="row title-review"><h3>Latest Anime Reviews</h3></div>
+            <div class="row reviews">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div th:replace="fraqments/commons::footer"></div>
+  <th:block th:include="fraqments/commons::footer-script"></th:block>
+  <script  th:src="@{js/extractReviews.js}"></script>
+  <script type="module" th:src="@{js/main.js}"></script>
+<!--  <script type="text/javascript" src="functions/extract"></script>-->
+
+  </body>
+
+</html>

@@ -1,0 +1,77 @@
+@media (max-width: 970px) {
+  .review-content {
+    margin-left: 0;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .title-and-select div h4 {
+    width: 10rem;
+    /* background-color: aqua; */
+  }
+  .title-and-select div h4 {
+    font-size: 1.2rem;
+  }
+  .review-content {
+    width: 60rem;
+  }
+}
+
+@media (max-width: 776px) {
+  .review-content {
+    width: 50rem;
+  }
+  .form-select {
+    max-width: 25rem;
+    margin-right: 3rem;
+  }
+  .title-and-select {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  textarea {
+    width: 100%;
+  }
+  form {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 660px) {
+  .review-content {
+    max-width: 35rem;
+  }
+}
+
+@media (max-width: 560px) {
+  .review-content {
+    width: 30rem;
+  }
+  .form-select {
+    max-width: 15rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .review-content {
+    width: 25rem;
+  }
+}
+@media (max-width: 360px) {
+  .review-content {
+    width: 22rem;
+  }
+  .title-and-select div h4 {
+    /* background-color: aqua; */
+    margin-bottom: 1rem;
+  }
+  .title-and-select {
+    display: block;
+  }
+  .recommended-btn h5 {
+    font-size: 1.2rem;
+  }
+}

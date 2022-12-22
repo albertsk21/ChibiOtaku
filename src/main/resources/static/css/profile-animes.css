@@ -1,0 +1,24 @@
+@import url("profile.css");
+@import url("search-anime.css");
+@import url("media-queries/profile-animes-queries.css");
+form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.form-select {
+  margin-right: 1rem;
+}
+.btn-warning {
+  border-radius: 10px;
+  font-size: 1.2rem;
+  padding: 0.8rem 2rem;
+  font-size: 1.2rem;
+}
+.filter-box {
+  margin-bottom: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

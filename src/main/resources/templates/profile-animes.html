@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <th:block th:include="fraqments/commons::head-content"></th:block>
+    <link rel="stylesheet" href="/css/profile-animes.css" />
+    <link
+      rel="stylesheet"
+      href="/css/media-queries/anime-details-queries.css"
+    />
+
+    <link
+      rel="stylesheet"
+      href="/css/media-queries/anime-reviews-queries.css"
+    />
+  </head>
+  <body>
+    <header th:replace="fraqments/commons::header-nav"></header>
+    <div class="container-xl main-container">
+      <div class="row details-box">
+        <div class="col first-col">
+          <div class="profile-box">
+            <div class="username-avatar"><h3 th:text="${#strings.substring(username,0,1)}">k</h3></div>
+            <div class="username-title"><h3 th:text="${username}">kakashi121</h3></div>
+          </div>
+        </div>
+        <div class="col-9 info-section">
+          <div th:replace="fraqments/user-nav::user-nav( ${username} ,'anime-list', ${authorization})" class="row"></div>
+
+          <div class="row filter-box">
+            <div class="col">
+              <form th:action="@{/users/{username}/list (username = ${username})}"
+                    th:method="post"
+                    th:object="${profileAnimeForm}" class="filter-box">
+                <select
+                  class="form-select form-select-lg"
+                  aria-label="Default select example"
+                  th:field="*{statusWatch}"
+                >
+                  <option selected value="">Select a type of the list</option>
+                  <option th:each="type : ${T(com.example.chibiotaku.domain.enums.WatchStatusEnum).values()}"
+                          th:value="${type}" th:text="${ #strings.substring(#strings.replace(type,'_',' '),0,1) + #strings.toLowerCase(#strings.substring(#strings.replace(type,'_',' '),1)) }">Movie</option>
+
+                </select>
+                <select
+                  class="form-select form-select-lg"
+                  aria-label="Default select example"
+                  th:field="*{objectType}"
+                >
+                  <option selected value="">Type content</option>
+                  <option th:each="type : ${T(com.example.chibiotaku.domain.enums.ObjectTypeEnum).values()}"
+                          th:value="${type}" th:text="${ #strings.substring(type,0,1) + #strings.toLowerCase(#strings.substring(type,1)) }" value="Complete">Complete</option>
+
+                </select>
+
+                <button type="submit" class="btn btn-warning">Apply</button>
+              </form>
+            </div>
+
+
+          </div>
+
+          <table class="table table-hover">
+            <thead>
+
+              <tr>
+                <th scope="col" class="title-th col-9 th">Title</th>
+
+
+                <th:block th:if = "${mangas != null }" >
+                  <th scope="col" class="th">Volumes</th>
+                </th:block>
+                <th:block th:if = "${mangas == null }">
+                  <th scope="col" class="th">Type</th>
+                  <th scope="col" class="th">Eps</th>
+                </th:block>
+                <th scope="col" class="th">Score</th>
+              </tr>
+            </thead>
+            <th:block th:if = "${mangas != null }">
+              <tbody>
+              <!-- <tr>
+                <th class="item-not-found">Anime not found :(</th>
+              </tr> -->
+              <tr th:each=" manga : ${mangas}">
+                <th scope="col">
+                  <div class="first-col-item">
+                    <div class="image-result-item">
+                      <img th:src="*{manga.imageUrl}" alt="" />
+                    </div>
+
+                    <div class="content-item">
+                      <div class="title-item">
+                        <a th:href="@{/manga/{id}(id = *{manga.id})}"><h4 th:text="*{manga.title}">title</h4></a>
+                      </div>
+                      <div class="summary-item">
+                        <p th:text="${#strings.substring(manga.content,0,100)} ">
+                          Lorem ipsum dolor sit amet consectetur adipisicing
+                          elit. Ipsa est ipsum quasi delectus aperiam,
+                          perferendis, corrupti dolor enim asperiores autem
+                          veniam ea cumque dolorem iure molestiae. Tempora ab
+                          exercitationem ducimus.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </th>
+<!--                <th class="th-edit" ><h5 th:text="*{ #strings.substring(manga.animeType,0,1) + #strings.toLowerCase(#strings.substring(anime.animeType,1)) }">TV</h5></th>-->
+                <th class="th-edit"><h5 th:text="*{manga.volumes}">25</h5></th>
+                <th class="th-edit"><h5 th:text="*{#numbers.formatDecimal(manga.score,1,'COMMA',2,'POINT')}">0</h5></th>
+              </tr>
+              </tbody>
+            </th:block>
+            <th:block th:if = "${mangas == null }">
+              <tbody>
+              <!-- <tr>
+                <th class="item-not-found">Anime not found :(</th>
+              </tr> -->
+              <tr th:each=" anime : ${animes}">
+                <th scope="col">
+                  <div class="first-col-item">
+                    <div class="image-result-item">
+                      <img th:src="*{anime.imageUrl}" alt="" />
+                    </div>
+
+                    <div class="content-item">
+                      <div class="title-item">
+                        <a th:href="@{/animes/{id}(id = *{anime.id})}"><h4 th:text="*{anime.title}">title</h4></a>
+                      </div>
+                      <div class="summary-item">
+                        <p th:text="${#strings.substring(anime.content,0,100)} ">
+                          Lorem ipsum dolor sit amet consectetur adipisicing
+                          elit. Ipsa est ipsum quasi delectus aperiam,
+                          perferendis, corrupti dolor enim asperiores autem
+                          veniam ea cumque dolorem iure molestiae. Tempora ab
+                          exercitationem ducimus.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </th>
+                <th class="th-edit" ><h5 th:text="*{ #strings.substring(anime.animeType,0,1) + #strings.toLowerCase(#strings.substring(anime.animeType,1)) }">TV</h5></th>
+                <th class="th-edit"><h5 th:text="*{anime.eps}">25</h5></th>
+                <th class="th-edit"><h5 th:text="*{#numbers.formatDecimal(anime.score,1,'COMMA',2,'POINT')}">0</h5></th>
+              </tr>
+              </tbody>
+            </th:block>
+
+          </table>
+        </div>
+      </div>
+    </div>
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
+    ></script>
+
+    <div class="container-fluid">
+      <footer class="container-footer footer-search-page row">
+        <div class="row">
+          <div class="title-logo-footer"><h3>ChibiOtaku</h3></div>
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>

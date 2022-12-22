@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+
+
+    <th:block th:include="fraqments/commons::head-content"></th:block>
+    <title>404 Page not found</title>
+
+    <link rel="stylesheet" href="/css/404-style.css" />
+    <style>
+      body::-webkit-scrollbar-thumb {
+        background: #ff59a1;
+
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container-fluid">
+      <div class="banner-pink"></div>
+    </div>
+    <div class="container-xl">
+      <div class="row container-content">
+        <div class="error-image">
+          <img src="/photos/404-image.png" alt="404" />
+        </div>
+
+        <div class="col content">
+          <h3>Page not found</h3>
+          <h5>
+            The page you are looking for might been removed had it's name
+            changed or is temporarily unavailable
+          </h5>
+          <form th:action="@{/}"
+          th:method="get">
+            <button type="submit" class="btn btn-pink">Home</button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="container-fluid">
+      <div class="banner-pink second-banner"></div>
+    </div>
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
+    ></script>
+  </body>
+</html>

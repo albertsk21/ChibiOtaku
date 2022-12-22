@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security" xmlns="http://www.w3.org/1999/html">
+<head >
+
+  <th:block th:fragment="head-content">
+    <meta charset="UTF-8">
+
+
+      <meta charset="UTF-8" />
+      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+
+      <link rel="preconnect" href="https://fonts.googleapis.com" />
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+      <link
+              href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;1,300&display=swap"
+              rel="stylesheet"
+      />
+      <link
+              href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+              rel="stylesheet"
+              integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+              crossorigin="anonymous"
+      />
+      <script
+              src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+              integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+              crossorigin="anonymous"
+      ></script>
+
+      <link rel="stylesheet" href="/css/main.css" />
+      <link rel="stylesheet" href="/css/media-queries/main-queries.css" />
+  </th:block>
+  </head>
+</head>
+<body>
+<th:block th:fragment="header-nav">
+
+
+
+  <div class="collapse" id="navbarToggleExternalContent">
+    <div class="bg-purple p-4">
+      <div class="container-xxl">
+        <ul class="list-nav row">
+            <li class="col" >
+              <a th:href="@{/}" class="btn-nav">
+                <ion-icon name="home-outline"  class="nav-icon"></ion-icon>Home</a>
+            </li>
+
+            <th:block sec:authorize = "isAuthenticated()">
+            <li class="col" >
+              <a th:href="@{/users/{username}(username = ${username})}" class="btn-nav">
+                <ion-icon name="person-outline" class="nav-icon"></ion-icon>My
+                Profile</a
+              >
+            </li>
+          </th:block>
+
+          <th:block sec:authorize="isAuthenticated()">
+            <li class="col">
+              <a th:href="@{/animes/add}" class="btn-nav">
+                <ion-icon
+                        name="add-circle-outline"
+                        class="nav-icon search-icon"
+                ></ion-icon>
+                anime/manga</a
+              >
+          </th:block>
+
+          </li>
+          <li class="nav-item dropdown col">
+            <a
+                    class="nav-link dropdown-toggle btn-nav"
+                    href="#"
+                    id="navbarDropdown"
+                    role="button"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+            >
+              <div class="icon-image">
+                <img src="/photos/otaku.png" alt="" />
+              </div>
+              Anime
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item" th:href="@{/animes/top-anime}">Top anime</a></li>
+              <li><hr class="dropdown-divider" /></li>
+              <li><a class="dropdown-item" th:href="@{/animes/search}">Anime search</a></li>
+              <li><hr class="dropdown-divider" /></li>
+            </ul>
+          </li>
+          <li class="nav-item dropdown col">
+            <a
+                    class="nav-link dropdown-toggle btn-nav"
+                    href="#"
+                    id="navbarDropdown"
+                    role="button"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+            >
+              <div class="icon-image">
+                <img src="/photos/manga-icon.png" alt="" />
+              </div>
+              Manga
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item" th:href="@{/manga/top-manga}">Top manga</a></li>
+              <li><hr class="dropdown-divider" /></li>
+              <li><a class="dropdown-item" th:href="@{/manga/search}">Manga search</a></li>
+              <li><hr class="dropdown-divider" /></li>
+
+            </ul>
+          </li>
+          <th:block sec:authorize = "!isAuthenticated()">
+            <li class="col" sec:authorize = "!isAuthenticated()">
+              <a th:href="@{/users/register}" class="btn-nav log-in-btn">
+                <ion-icon name="people-outline" class="nav-icon"></ion-icon
+                >Register</a
+              >
+            </li>
+            </th:block>
+          <th:block sec:authorize = "!isAuthenticated()">
+            <li class="col" >
+              <a th:href="@{/users/login}" class="btn-nav log-in-btn">
+                <ion-icon name="log-in-outline" class="nav-icon"></ion-icon
+                >Log in</a
+              >
+            </li>
+          </th:block>
+
+
+          <th:block  sec:authorize ="isAuthenticated()">
+            <li class="col" >
+
+              <form th:action="@{/users/logout}"
+              th:method="post">
+                <button type="submit" class="btn-nav btn btn-logout log-in-btn">
+                <ion-icon name="log-in-outline" class="nav-icon"></ion-icon
+                >Log out</button>
+              </form>
+
+
+            </li>
+          </th:block>
+
+
+        </ul>
+      </div>
+    </div>
+  </div>
+  <nav class="navbar navbar-dark bg-purple">
+    <div class="container-fluid">
+      <button
+              class="navbar-toggler"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#navbarToggleExternalContent"
+              aria-controls="navbarToggleExternalContent"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    </div>
+  </nav>
+</th:block>
+<div th:fragment="footer" class="container-fluid">
+  <footer class="container-footer footer-search-page row">
+    <div class="row">
+      <div class="title-logo-footer"><h3>ChibiOtaku</h3></div>
+    </div>
+  </footer>
+</div>
+
+<th:block th:fragment="footer-script">
+  <script
+          type="module"
+          src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
+  ></script>
+  <script
+          nomodule
+          src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
+  ></script>
+</th:block>
+</body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <th:block th:include="fraqments/commons::head-content"></th:block>
+    <link rel="stylesheet" href="/css/search-anime.css" />
+  </head>
+  <body>
+  <header th:include="fraqments/commons::header-nav"></header>
+
+    <div class="container-fluid">
+      <div class="row container-search-box">
+        <div class="row search-image-box">
+          <img src="/photos/search-anime.png" alt="search-anime" />
+        </div>
+        <div class="row title-search-box"><h3>Search an manga</h3></div>
+      </div>
+    </div>
+
+  <div class="container-xl">
+
+    <form class=" row search-area" th:action="@{/manga/search}"
+          th:method="post"
+          th:object="${searchForm}"
+    >
+      <div class="input-group">
+
+
+        <input
+                th:field="*{data}"
+                type="search"
+                class="form-control rounded search-bar"
+                placeholder="Search"
+                aria-label="Search"
+                aria-describedby="search-addon"
+        />
+        <button type="submit" class="btn btn-purple search-btn">
+          <ion-icon name="search-outline"></ion-icon>
+        </button>
+
+      </div>
+    </form>
+
+
+    <div class="table-container">
+      <div class="search-title-box"><h4>Search Result</h4></div>
+
+      <table class="table table-hover">
+        <thead>
+        <tr>
+          <th scope="col" class="title-th col-9 th">Title</th>
+          <th scope="col" class="th">Chapters</th>
+          <th scope="col" class="th">Volumes</th>
+          <th scope="col" class="th">Popularity</th>
+        </tr>
+        </thead>
+        <tbody>
+        <!-- <tr>
+          <th class="item-not-found">Anime not found :(</th>
+        </tr> -->
+        <tr th:each="manga : ${mangas}">
+          <th scope="col">
+            <div class="first-col-item">
+              <div class="image-result-item">
+                <img th:src="${manga.imageUrl}" alt="" />
+              </div>
+
+              <div class="content-item">
+                <div class="title-item">
+                  <a th:href="@{/manga/{id}(id = ${manga.id})}"><h4 th:text="${manga.title}">Attack on Titan</h4></a>
+                </div>
+                <div class="summary-item">
+                  <p th:text = "${#strings.substring(manga.content,0,100)} + '...'">
+                  </p>
+                </div>
+              </div>
+            </div>
+          </th>
+          <th class="th-edit" th:text="${manga.chapters}"><h5>2</h5></th>
+          <th class="th-edit" th:text="${manga.volumes}"><h5>25</h5></th>
+          <th class="th-edit" th:text="${manga.popularity}"><h5>8.53</h5></th>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+    <div th:replace="fraqments/commons::footer"></div>
+    <th:block th:include="fraqments/commons::footer-script"></th:block>
+  </body>
+</html>

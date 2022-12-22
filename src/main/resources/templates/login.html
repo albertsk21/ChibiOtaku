@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en"      xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <th:block th:include="fraqments/commons::head-content"> </th:block>
+    <link rel="stylesheet" href="/css/form.css" />
+    <link rel="stylesheet" href="/css/media-queries/form-queries.css" />
+    <title>Log in</title>
+  </head>
+  <body>
+    <div></div>
+    <div
+      class="position-items-center main-form-container container-fluid container-image"
+    >
+      <div class="blur"></div>
+      <div class="center-form">
+        <form  th:action="@{/users/login}"
+               th:method="post"
+               class="form">
+          <div>
+            <h1 class="login-title">Welcome back</h1>
+            <br />
+
+
+          </div>
+          <h2>Log in</h2>
+          <small  th:if="${bad_credentials}" style="color: red"> Invalid username or password</small>
+
+          <input name="username" id="username" type="text" placeholder="Username" class="border" />
+          <input name="password" id="password" type="password" placeholder="Password" class="border" />
+
+          <div class="form-check">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              value=""
+              id="flexCheckChecked"
+              name= "remember-me"
+              th:value="${username}"
+              checked
+            />
+            <label class="form-check-label" for="flexCheckChecked" >
+              Remember me
+            </label>
+          </div>
+
+          <input class="btn login-btn" type="submit" value="Submit" />
+        </form>
+
+        <p class="paragraph-form">
+          Don't have an account? <a th:href="@{/users/register}">Register here</a>
+        </p>
+
+        <a class="btn btn-purple btn-small btn-back-link" th:href="@{/}">Home</a>
+      </div>
+    </div>
+  </body>
+</html>
